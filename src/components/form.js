@@ -52,6 +52,12 @@ function Form({ changeName, addMarker, newMarker, exitModeAddMarker }) {
     }
   };
 
+  const handleKeyDown = event => {
+    if (event.key === "Enter") {
+      handleSaveMarker();
+    }
+  };
+
   return (
     <FormStyled active={isActive}>
       <input
@@ -59,6 +65,7 @@ function Form({ changeName, addMarker, newMarker, exitModeAddMarker }) {
         placeholder="name of marker"
         onChange={handleChange}
         value={nameMarker}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={handleSaveMarker}>Save</button>
     </FormStyled>

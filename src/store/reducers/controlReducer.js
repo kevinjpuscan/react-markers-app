@@ -2,8 +2,8 @@ import * as types from "../types/controlTypes";
 const initialState = {
   isPanelOpen: false,
   isAddMarker: false,
-  zoom: 12,
-  centerMap: [45.4, -75.7]
+  zoom: 17,
+  centerMap: [-7.1570213, -78.5173988]
 };
 export const controlReducer = (state = initialState, action) => {
   switch (action.type) {

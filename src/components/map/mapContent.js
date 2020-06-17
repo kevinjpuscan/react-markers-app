@@ -28,6 +28,7 @@ function MapContent({
         zoom={zoom}
         onMoveEnd={handleChangeCenter}
         onZoomEnd={handleChangeZoom}
+        zoomControl={false}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
