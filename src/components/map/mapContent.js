@@ -5,14 +5,30 @@ import InputMarker from "./inputMarker";
 import { connect } from "react-redux";
 import * as controlTypes from "../../store/types/controlTypes";
 
-function MapContent({ center, markers, isAddMarker, changeCenterMap }) {
+function MapContent({
+  center,
+  markers,
+  isAddMarker,
+  changeCenterMap,
+  zoom,
+  changeZoomMap
+}) {
   const handleChangeCenter = event => {
     let { lat, lng } = event.target.getCenter();
     changeCenterMap([lat, lng]);
   };
+
+  const handleChangeZoom = event => {
+    changeZoomMap(event.target.getZoom());
+  };
   return (
     <div>
-      <Map center={center} zoom={12} onMoveEnd={handleChangeCenter}>
+      <Map
+        center={center}
+        zoom={zoom}
+        onMoveEnd={handleChangeCenter}
+        onZoomEnd={handleChangeZoom}
+      >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -31,6 +47,7 @@ function MapContent({ center, markers, isAddMarker, changeCenterMap }) {
 const mapStateToProps = state => {
   return {
     center: state.controlReducer.centerMap,
+    zoom: state.controlReducer.zoom,
     markers: state.markerReducer.markers,
     isAddMarker: state.controlReducer.isAddMarker
   };
@@ -39,7 +56,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeCenterMap: latLng =>
-      dispatch({ type: controlTypes.CHANGE_CENTER_MAP, payload: latLng })
+      dispatch({ type: controlTypes.CHANGE_CENTER_MAP, payload: latLng }),
+    changeZoomMap: zoom =>
+      dispatch({ type: controlTypes.CHANGE_ZOOM_MAP, payload: zoom })
   };
 };
 

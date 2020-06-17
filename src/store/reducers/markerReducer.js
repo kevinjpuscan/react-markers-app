@@ -1,11 +1,6 @@
 import * as types from "../types/markerTypes";
 const initialState = {
-  markers: [
-    {
-      name: "casa",
-      latLon: [45.4, -75.7]
-    }
-  ],
+  markers: [],
   newMarker: {}
 };
 export const markerReducer = (state = initialState, action) => {

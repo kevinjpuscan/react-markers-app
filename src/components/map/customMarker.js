@@ -1,5 +1,5 @@
 import React from "react";
-import { Marker } from "react-leaflet";
+import { Marker, Tooltip } from "react-leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
 import L from "leaflet";
 import styled from "styled-components";
@@ -28,7 +28,11 @@ function CustomMarker({ marker }) {
           <IconStyled>{marker.name.substring(0, 1).toUpperCase()}</IconStyled>
         )
       })}
-    />
+    >
+      <Tooltip direction="top" offset={[10, -10]}>
+        {marker.name}
+      </Tooltip>
+    </Marker>
   );
 }
 
