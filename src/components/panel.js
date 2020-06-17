@@ -22,7 +22,6 @@ export const PanelStyled = styled.div`
   }
 `;
 function Panel({ markers }) {
-  console.log(markers);
   return (
     <PanelStyled>
       <div className="card-list">

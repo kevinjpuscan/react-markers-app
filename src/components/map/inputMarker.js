@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React, { createRef, useEffect } from "react";
 import { Marker } from "react-leaflet";
 import { connect } from "react-redux";
 
@@ -14,6 +14,10 @@ function InputMarker({ center, changePosition }) {
       changePosition([lat, lng]);
     }
   };
+
+  useEffect(() => {
+    changePosition(center);
+  });
   return (
     <Marker
       ref={refMarker}

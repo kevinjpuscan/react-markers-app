@@ -4,6 +4,7 @@ import RemoveIcon from "../images/close";
 import BtnCircle from "./btnCircle";
 import { connect } from "react-redux";
 import * as controlTypes from "../store/types/controlTypes";
+import * as markerTypes from "../store/types/markerTypes";
 
 export const CardStyled = styled.div`
   margin-right: 1em;
@@ -48,15 +49,18 @@ export const CardStyled = styled.div`
   }
 `;
 
-function Card({ marker, handleChangeCenter }) {
+function Card({ marker, idx, handleChangeCenter, handleRemoveMarker }) {
   return (
-    <CardStyled onClick={() => handleChangeCenter(marker.latLon)}>
-      <div className="container-card">
+    <CardStyled>
+      <div
+        className="container-card"
+        onClick={() => handleChangeCenter(marker.latLon)}
+      >
         <span>{marker.name.substring(0, 1).toUpperCase()}</span>
       </div>
       <div className="name-card">{marker.name}</div>
       <div className="btn-remove">
-        <BtnCircle small danger>
+        <BtnCircle small danger onClick={() => handleRemoveMarker(idx)}>
           <RemoveIcon size="12px"></RemoveIcon>
         </BtnCircle>
       </div>
@@ -67,7 +71,9 @@ function Card({ marker, handleChangeCenter }) {
 const mapDispatchToProps = dispatch => {
   return {
     handleChangeCenter: latLon =>
-      dispatch({ type: controlTypes.CHANGE_CENTER_MAP, payload: latLon })
+      dispatch({ type: controlTypes.CHANGE_CENTER_MAP, payload: latLon }),
+    handleRemoveMarker: idx =>
+      dispatch({ type: markerTypes.REMOVE_MARKER, payload: idx })
   };
 };
 export default connect(

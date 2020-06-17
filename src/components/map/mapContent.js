@@ -3,11 +3,16 @@ import { Map, TileLayer } from "react-leaflet";
 import CustomMarker from "./customMarker";
 import InputMarker from "./inputMarker";
 import { connect } from "react-redux";
+import * as controlTypes from "../../store/types/controlTypes";
 
-function MapContent({ center, markers, isAddMarker }) {
+function MapContent({ center, markers, isAddMarker, changeCenterMap }) {
+  const handleChangeCenter = event => {
+    let { lat, lng } = event.target.getCenter();
+    changeCenterMap([lat, lng]);
+  };
   return (
     <div>
-      <Map center={center} zoom={12}>
+      <Map center={center} zoom={12} onMoveEnd={handleChangeCenter}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -31,7 +36,14 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    changeCenterMap: latLng =>
+      dispatch({ type: controlTypes.CHANGE_CENTER_MAP, payload: latLng })
+  };
+};
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(MapContent);

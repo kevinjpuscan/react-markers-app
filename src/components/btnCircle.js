@@ -19,7 +19,7 @@ export const BtnCircleStyled = styled.button`
 
   ${props =>
     props.danger &&
-    ` background: red;
+    ` background: #e93939 ;
       fill: white;
     `};
 

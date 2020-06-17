@@ -14,7 +14,9 @@ export const markerReducer = (state = initialState, action) => {
       return { ...state, markers: [...state.markers, action.payload] };
     }
     case types.REMOVE_MARKER: {
-      return { ...state };
+      let newMarkers = [...state.markers];
+      newMarkers.splice(action.payload, 1);
+      return { ...state, markers: newMarkers };
     }
     case types.CHANGE_POSITION_NEW_MARKER: {
       return {

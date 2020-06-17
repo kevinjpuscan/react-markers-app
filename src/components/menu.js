@@ -5,7 +5,8 @@ import BtnCircle from "./btnCircle";
 import ListIcon from "../images/list.js";
 import AddIcon from "../images/add.js";
 import CloseIcon from "../images/close.js";
-import * as controlType from "../store/types/controlTypes";
+import DownIcon from "../images/down.js";
+import * as controlTypes from "../store/types/controlTypes";
 
 export const MenuStyled = styled.div`
   display: flex;
@@ -20,14 +21,25 @@ export const MenuStyled = styled.div`
   bottom: ${props => (props.isOpen ? "190px" : "2em")};
 `;
 
-function Menu({ isPanelOpen, handleOpen, handleClose, handleAddMarkerForm }) {
+function Menu({
+  isPanelOpen,
+  handleOpen,
+  handleClose,
+  handleAddMarkerForm,
+  isAddMarker,
+  handleCancelAddMarker
+}) {
   return (
     <MenuStyled isOpen={isPanelOpen}>
-      <BtnCircle primary onClick={handleAddMarkerForm}>
-        <AddIcon />
+      <BtnCircle
+        primary={!isAddMarker}
+        danger={isAddMarker}
+        onClick={isAddMarker ? handleCancelAddMarker : handleAddMarkerForm}
+      >
+        {isAddMarker ? <CloseIcon /> : <AddIcon />}
       </BtnCircle>
       <BtnCircle onClick={isPanelOpen ? handleClose : handleOpen}>
-        {isPanelOpen ? <CloseIcon /> : <ListIcon />}
+        {isPanelOpen ? <DownIcon /> : <ListIcon />}
       </BtnCircle>
     </MenuStyled>
   );
@@ -43,11 +55,13 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleOpen: () =>
-      dispatch({ type: controlType.CHANGE_PANEL_STATE, payload: true }),
+      dispatch({ type: controlTypes.CHANGE_PANEL_STATE, payload: true }),
     handleClose: () =>
-      dispatch({ type: controlType.CHANGE_PANEL_STATE, payload: false }),
+      dispatch({ type: controlTypes.CHANGE_PANEL_STATE, payload: false }),
     handleAddMarkerForm: () =>
-      dispatch({ type: controlType.CHANGE_ADD_MARKER_STATE, payload: true })
+      dispatch({ type: controlTypes.CHANGE_ADD_MARKER_STATE, payload: true }),
+    handleCancelAddMarker: () =>
+      dispatch({ type: controlTypes.CHANGE_ADD_MARKER_STATE, payload: false })
   };
 };
 
