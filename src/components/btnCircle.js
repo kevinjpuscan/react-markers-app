@@ -16,10 +16,26 @@ export const BtnCircleStyled = styled.button`
     ` background: var(--main);
       fill: white;
     `};
+
+  ${props =>
+    props.danger &&
+    ` background: red;
+      fill: white;
+    `};
+
+  ${props =>
+    props.small &&
+    ` padding: 0.3em;
+    `};
 `;
-function BtnCircle({ primary, onClick, children }) {
+function BtnCircle({ primary, danger, small, onClick, children }) {
   return (
-    <BtnCircleStyled primary={primary} onClick={onClick}>
+    <BtnCircleStyled
+      primary={primary}
+      danger={danger}
+      small={small}
+      onClick={onClick}
+    >
       {children}
     </BtnCircleStyled>
   );

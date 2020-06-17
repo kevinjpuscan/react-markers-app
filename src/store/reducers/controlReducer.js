@@ -1,7 +1,7 @@
 import * as types from "../types/controlTypes";
 const initialState = {
-  isPanelOpen: false,
-  isAddMarkerOpen: false,
+  isPanelOpen: true,
+  isAddMarker: false,
   centerMap: [45.4, -75.7]
 };
 export const controlReducer = (state = initialState, action) => {
@@ -10,7 +10,10 @@ export const controlReducer = (state = initialState, action) => {
       return { ...state, isPanelOpen: action.payload };
     }
     case types.CHANGE_ADD_MARKER_STATE: {
-      return { ...state, isAddMarkerOpen: action.payload };
+      return { ...state, isAddMarker: action.payload };
+    }
+    case types.CHANGE_CENTER_MAP: {
+      return { ...state, centerMap: action.payload };
     }
     default: {
       return state;

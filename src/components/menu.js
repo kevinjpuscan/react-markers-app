@@ -20,10 +20,10 @@ export const MenuStyled = styled.div`
   bottom: ${props => (props.isOpen ? "190px" : "2em")};
 `;
 
-function Menu({ isPanelOpen, handleOpen, handleClose }) {
+function Menu({ isPanelOpen, handleOpen, handleClose, handleAddMarkerForm }) {
   return (
     <MenuStyled isOpen={isPanelOpen}>
-      <BtnCircle primary>
+      <BtnCircle primary onClick={handleAddMarkerForm}>
         <AddIcon />
       </BtnCircle>
       <BtnCircle onClick={isPanelOpen ? handleClose : handleOpen}>
@@ -35,7 +35,8 @@ function Menu({ isPanelOpen, handleOpen, handleClose }) {
 
 const mapStateToProps = state => {
   return {
-    isPanelOpen: state.controlReducer.isPanelOpen
+    isPanelOpen: state.controlReducer.isPanelOpen,
+    isAddMarker: state.controlReducer.isAddMarker
   };
 };
 
@@ -44,7 +45,9 @@ const mapDispatchToProps = dispatch => {
     handleOpen: () =>
       dispatch({ type: controlType.CHANGE_PANEL_STATE, payload: true }),
     handleClose: () =>
-      dispatch({ type: controlType.CHANGE_PANEL_STATE, payload: false })
+      dispatch({ type: controlType.CHANGE_PANEL_STATE, payload: false }),
+    handleAddMarkerForm: () =>
+      dispatch({ type: controlType.CHANGE_ADD_MARKER_STATE, payload: true })
   };
 };
 

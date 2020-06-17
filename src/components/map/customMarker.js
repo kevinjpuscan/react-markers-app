@@ -21,8 +21,6 @@ export const IconStyled = styled.div`
 function CustomMarker({ marker }) {
   return (
     <Marker
-      draggable={true}
-      onDragend={() => console.log("hola")}
       position={marker.latLon}
       icon={L.divIcon({
         className: "custom icon",

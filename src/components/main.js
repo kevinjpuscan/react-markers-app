@@ -3,15 +3,17 @@ import styled from "styled-components";
 import Map from "./map/mapContent";
 import Menu from "./menu";
 import Panel from "./panel";
+import Form from "./form";
 import { connect } from "react-redux";
 
 export const MainStyled = styled.div`
   height: 100vh;
 `;
 
-function Main({ isPanelOpen, isAddMarkerOpen }) {
+function Main({ isPanelOpen, isAddMarker }) {
   return (
     <MainStyled>
+      {isAddMarker && <Form />}
       <Map />
       <Menu />
       {isPanelOpen && <Panel />}
@@ -22,7 +24,7 @@ function Main({ isPanelOpen, isAddMarkerOpen }) {
 const mapStateToProps = state => {
   return {
     isPanelOpen: state.controlReducer.isPanelOpen,
-    isAddMarkerOpen: state.controlReducer.isAddMarkerOpen
+    isAddMarker: state.controlReducer.isAddMarker
   };
 };
 
