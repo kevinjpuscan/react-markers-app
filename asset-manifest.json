@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-markers-app/static/css/main.c1e4a6eb.chunk.css",
+    "main.js": "/react-markers-app/static/js/main.e7fb63d4.chunk.js",
+    "main.js.map": "/react-markers-app/static/js/main.e7fb63d4.chunk.js.map",
+    "runtime-main.js": "/react-markers-app/static/js/runtime-main.75a297ce.js",
+    "runtime-main.js.map": "/react-markers-app/static/js/runtime-main.75a297ce.js.map",
+    "static/js/2.eb225e29.chunk.js": "/react-markers-app/static/js/2.eb225e29.chunk.js",
+    "static/js/2.eb225e29.chunk.js.map": "/react-markers-app/static/js/2.eb225e29.chunk.js.map",
+    "index.html": "/react-markers-app/index.html",
+    "precache-manifest.26d7d4dcbf08f5c5986ab6c1cee9100c.js": "/react-markers-app/precache-manifest.26d7d4dcbf08f5c5986ab6c1cee9100c.js",
+    "service-worker.js": "/react-markers-app/service-worker.js",
+    "static/css/main.c1e4a6eb.chunk.css.map": "/react-markers-app/static/css/main.c1e4a6eb.chunk.css.map",
+    "static/js/2.eb225e29.chunk.js.LICENSE.txt": "/react-markers-app/static/js/2.eb225e29.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.75a297ce.js",
+    "static/js/2.eb225e29.chunk.js",
+    "static/css/main.c1e4a6eb.chunk.css",
+    "static/js/main.e7fb63d4.chunk.js"
+  ]
+}
